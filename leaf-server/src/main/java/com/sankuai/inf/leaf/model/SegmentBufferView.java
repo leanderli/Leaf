@@ -1,4 +1,4 @@
-package com.sankuai.inf.leaf.server.model;
+package com.sankuai.inf.leaf.model;
 
 public class SegmentBufferView {
     private String key;

@@ -1,4 +1,4 @@
-package com.sankuai.inf.leaf.server.service;
+package com.sankuai.inf.leaf.service;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.sankuai.inf.leaf.IDGen;
@@ -8,8 +8,8 @@ import com.sankuai.inf.leaf.common.ZeroIDGen;
 import com.sankuai.inf.leaf.segment.SegmentIDGenImpl;
 import com.sankuai.inf.leaf.segment.dao.IDAllocDao;
 import com.sankuai.inf.leaf.segment.dao.impl.IDAllocDaoImpl;
-import com.sankuai.inf.leaf.server.Constants;
-import com.sankuai.inf.leaf.server.exception.InitException;
+import com.sankuai.inf.leaf.Constants;
+import com.sankuai.inf.leaf.exception.InitException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.sankuai.inf.leaf.server;
+package com.sankuai.inf.leaf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

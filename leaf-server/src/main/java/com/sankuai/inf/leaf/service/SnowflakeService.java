@@ -1,4 +1,4 @@
-package com.sankuai.inf.leaf.server.service;
+package com.sankuai.inf.leaf.service;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,9 +9,9 @@ import com.sankuai.inf.leaf.common.Utils;
 import com.sankuai.inf.leaf.common.ZeroIDGen;
 import com.sankuai.inf.leaf.segment.dao.WorkerIdAllocDao;
 import com.sankuai.inf.leaf.segment.dao.impl.WorkerIdAllocDaoImpl;
-import com.sankuai.inf.leaf.server.Constants;
-import com.sankuai.inf.leaf.server.SnowflakeMode;
-import com.sankuai.inf.leaf.server.exception.InitException;
+import com.sankuai.inf.leaf.Constants;
+import com.sankuai.inf.leaf.SnowflakeMode;
+import com.sankuai.inf.leaf.exception.InitException;
 import com.sankuai.inf.leaf.snowflake.RecyclableZookeeperHolder;
 import com.sankuai.inf.leaf.snowflake.SnowflakeIDGenImpl;
 import com.sankuai.inf.leaf.snowflake.SnowflakeLocalHolder;

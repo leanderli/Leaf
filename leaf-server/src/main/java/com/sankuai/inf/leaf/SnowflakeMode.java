@@ -1,4 +1,4 @@
-package com.sankuai.inf.leaf.server;
+package com.sankuai.inf.leaf;
 
 /**
  *  ZK_NORMAL 注册中心为Zookeeper，,针对每个ip:port的workid是固定的
