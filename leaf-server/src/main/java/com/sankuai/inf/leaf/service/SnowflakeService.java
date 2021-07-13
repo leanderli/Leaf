@@ -36,7 +36,7 @@ public class SnowflakeService {
         boolean flag = Boolean.parseBoolean(properties.getProperty(Constants.LEAF_SNOWFLAKE_ENABLE, "true"));
         String mode = properties.getProperty(Constants.LEAF_SNOWFLAKE_MODE, SnowflakeMode.ZK_NORMAL);
         //当前leaf服务的端口
-        int    port      = Integer.parseInt(properties.getProperty(Constants.LEAF_SNOWFLAKE_PORT));
+        int port = Integer.parseInt(properties.getProperty(Constants.LEAF_SNOWFLAKE_PORT));
 
         if (flag) {
             if (mode.equals(SnowflakeMode.ZK_NORMAL)) {//注册中心为zk,对ip:port分配固定的workId的模式,这也是默认的模式
@@ -47,9 +47,9 @@ public class SnowflakeService {
                 } else {
                     throw new InitException("Snowflake Service Init Fail");
                 }
-            } else if(mode.equals(SnowflakeMode.ZK_RECYCLE)) {//注册中心为zk,对ip:port分配的workId是课循环利用的模式
-                String    zkAddress = properties.getProperty(Constants.LEAF_SNOWFLAKE_ZK_ADDRESS);
-                RecyclableZookeeperHolder holder    = new RecyclableZookeeperHolder(Utils.getIp(),port,zkAddress);
+            } else if (mode.equals(SnowflakeMode.ZK_RECYCLE)) {//注册中心为zk,对ip:port分配的workId是课循环利用的模式
+                String zkAddress = properties.getProperty(Constants.LEAF_SNOWFLAKE_ZK_ADDRESS);
+                RecyclableZookeeperHolder holder = new RecyclableZookeeperHolder(Utils.getIp(), port, zkAddress);
                 idGen = new SnowflakeIDGenImpl(holder);
                 if (idGen.init()) {
                     logger.info("Snowflake Service Init Successfully in mode " + mode);
@@ -66,7 +66,7 @@ public class SnowflakeService {
                 WorkerIdAllocDao dao = new WorkerIdAllocDaoImpl(dataSource);
 
                 SnowflakeMySQLHolder holder = new SnowflakeMySQLHolder(Utils.getIp(), port, dao);
-                idGen  = new SnowflakeIDGenImpl(holder);
+                idGen = new SnowflakeIDGenImpl(holder);
                 if (idGen.init()) {
                     logger.info("Snowflake Service Init Successfully in mode " + mode);
                 } else {
@@ -74,11 +74,11 @@ public class SnowflakeService {
                 }
             } else if (mode.equals(SnowflakeMode.LOCAL)) {//注册中心为本地配置
                 ObjectMapper mapper = new ObjectMapper();
-                String  workIdMapString = PropertyFactory.getProperties().getProperty(Constants.LEAF_SNOWFLAKE_LOCAL_WORKIDMAP);
-                HashMap<String,Integer> workIdMap = mapper.readValue(workIdMapString, HashMap.class);
-                SnowflakeLocalHolder holder = new SnowflakeLocalHolder(Utils.getIp(), port,workIdMap);
+                String workIdMapString = PropertyFactory.getProperties().getProperty(Constants.LEAF_SNOWFLAKE_LOCAL_WORKIDMAP);
+                HashMap<String, Integer> workIdMap = mapper.readValue(workIdMapString, HashMap.class);
+                SnowflakeLocalHolder holder = new SnowflakeLocalHolder(Utils.getIp(), port, workIdMap);
 
-                idGen  = new SnowflakeIDGenImpl(holder);
+                idGen = new SnowflakeIDGenImpl(holder);
                 if (idGen.init()) {
                     logger.info("Snowflake Service Init Successfully in mode " + mode);
                 } else {

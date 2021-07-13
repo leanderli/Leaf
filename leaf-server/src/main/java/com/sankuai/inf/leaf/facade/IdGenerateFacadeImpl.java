@@ -1,18 +1,17 @@
-package com.sankuai.inf.leaf.facadeimpl;
+package com.sankuai.inf.leaf.facade;
 
 import com.alibaba.cola.dto.SingleResponse;
 import com.sankuai.inf.leaf.IdGeneratorType;
 import com.sankuai.inf.leaf.common.Result;
 import com.sankuai.inf.leaf.common.Status;
 import com.sankuai.inf.leaf.dto.Id;
-import com.sankuai.inf.leaf.facade.IdGenerateFacade;
 import com.sankuai.inf.leaf.service.SegmentService;
 import com.sankuai.inf.leaf.service.SnowflakeService;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-@Service
+@DubboService
 public class IdGenerateFacadeImpl implements IdGenerateFacade {
 
     @Autowired
