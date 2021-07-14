@@ -1,6 +1,8 @@
 package com.sankuai.inf.leaf.dto;
 
-public class Id {
+import com.alibaba.cola.dto.DTO;
+
+public class Id extends DTO {
 
     private Long Id;
 
