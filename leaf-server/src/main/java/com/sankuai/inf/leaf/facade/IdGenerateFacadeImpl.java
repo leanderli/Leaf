@@ -1,8 +1,8 @@
 package com.sankuai.inf.leaf.facade;
 
-import com.alibaba.cola.dto.SingleResponse;
 import com.sankuai.inf.leaf.IdGeneratorType;
 import com.sankuai.inf.leaf.common.Result;
+import com.sankuai.inf.leaf.common.Status;
 import com.sankuai.inf.leaf.service.SegmentService;
 import com.sankuai.inf.leaf.service.SnowflakeService;
 import org.apache.dubbo.config.annotation.DubboService;
@@ -18,9 +18,9 @@ public class IdGenerateFacadeImpl implements IdGenerateFacade {
     private SnowflakeService snowflakeService;
 
     @Override
-    public SingleResponse getId(String isNamespace, IdGeneratorType type) {
+    public long getId(String isNamespace, IdGeneratorType type) {
         if (StringUtils.isEmpty(isNamespace)) {
-            return SingleResponse.buildFailure("400", "Parameter 'isNamespace' must be not null");
+            throw new IllegalArgumentException("Parameter 'isNamespace' must be not null");
         }
         Result result;
         switch (type) {
@@ -32,6 +32,9 @@ public class IdGenerateFacadeImpl implements IdGenerateFacade {
                 result = snowflakeService.getId(isNamespace);
                 break;
         }
-        return SingleResponse.of(result);
+        if (null == result || result.getStatus() == Status.EXCEPTION) {
+            throw new IllegalStateException("Id generate failed,result is null");
+        }
+        return result.getId();
     }
 }

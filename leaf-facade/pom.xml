@@ -17,12 +17,4 @@
         <cola.framework.version>4.0.1</cola.framework.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.alibaba.cola</groupId>
-            <artifactId>cola-component-dto</artifactId>
-            <version>${cola.framework.version}</version>
-        </dependency>
-    </dependencies>
-
 </project>
